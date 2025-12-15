@@ -1,0 +1,113 @@
+{
+  "021000021": {
+    "routingNumber": "021000021",
+    "bankName": "JPMORGAN CHASE BANK",
+    "address": "1111 POLARIS PARKWAY",
+    "city": "COLUMBUS",
+    "state": "OH",
+    "zipCode": "43240",
+    "recordType": "1",
+    "changeDate": "091912",
+    "phone": "1-877-242-7372"
+  },
+  "026009593": {
+    "routingNumber": "026009593",
+    "bankName": "BANK OF AMERICA, N.A.",
+    "address": "100 N TRYON ST",
+    "city": "CHARLOTTE",
+    "state": "NC",
+    "zipCode": "28255",
+    "recordType": "1",
+    "changeDate": "031515",
+    "phone": "1-800-432-1000"
+  },
+  "031176110": {
+    "routingNumber": "031176110",
+    "bankName": "CAPITAL ONE, N.A.",
+    "address": "1680 CAPITAL ONE DR",
+    "city": "MCLEAN",
+    "state": "VA",
+    "zipCode": "22102",
+    "recordType": "1",
+    "changeDate": "071317",
+    "phone": "1-877-383-4802"
+  },
+  "121042882": {
+    "routingNumber": "121042882",
+    "bankName": "WELLS FARGO BANK, N.A.",
+    "address": "420 MONTGOMERY ST",
+    "city": "SAN FRANCISCO",
+    "state": "CA",
+    "zipCode": "94104",
+    "recordType": "1",
+    "changeDate": "011210",
+    "phone": "1-800-869-3557"
+  },
+  "122105278": {
+    "routingNumber": "122105278",
+    "bankName": "WELLS FARGO BANK, N.A.",
+    "address": "420 MONTGOMERY ST",
+    "city": "SAN FRANCISCO",
+    "state": "CA",
+    "zipCode": "94104",
+    "recordType": "1",
+    "changeDate": "011210",
+    "phone": "1-800-869-3557"
+  },
+  "124003116": {
+    "routingNumber": "124003116",
+    "bankName": "WELLS FARGO BANK, N.A.",
+    "address": "420 MONTGOMERY ST",
+    "city": "SAN FRANCISCO",
+    "state": "CA",
+    "zipCode": "94104",
+    "recordType": "1",
+    "changeDate": "011210",
+    "phone": "1-800-869-3557"
+  },
+  "211170101": {
+    "routingNumber": "211170101",
+    "bankName": "TD BANK, N.A.",
+    "address": "2035 LIMESTONE RD",
+    "city": "WILMINGTON",
+    "state": "DE",
+    "zipCode": "19808",
+    "recordType": "1",
+    "changeDate": "050410",
+    "phone": "1-888-751-9000"
+  },
+  "211274450": {
+    "routingNumber": "211274450",
+    "bankName": "TD BANK, N.A.",
+    "address": "2035 LIMESTONE RD",
+    "city": "WILMINGTON",
+    "state": "DE",
+    "zipCode": "19808",
+    "recordType": "1",
+    "changeDate": "050410",
+    "phone": "1-888-751-9000"
+  },
+  "044000024": {
+    "routingNumber": "044000024",
+    "bankName": "PNC BANK, NATIONAL ASSOCIATION",
+    "address": "222 DELAWARE AVENUE",
+    "city": "WILMINGTON",
+    "state": "DE",
+    "zipCode": "19801",
+    "recordType": "1",
+    "changeDate": "032417",
+    "phone": "1-888-762-2265"
+  },
+  "053000196": {
+    "routingNumber": "053000196",
+    "bankName": "PNC BANK, NATIONAL ASSOCIATION",
+    "address": "222 DELAWARE AVENUE",
+    "city": "WILMINGTON",
+    "state": "DE",
+    "zipCode": "19801",
+    "recordType": "1",
+    "changeDate": "032417",
+    "phone": "1-888-762-2265"
+  }
+}
+
