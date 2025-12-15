@@ -40,11 +40,8 @@ This service provides routing number verification for informational purposes onl
 
 ## License
 
-ISC
+MIT License
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 
 
