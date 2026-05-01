@@ -1,201 +1,534 @@
 import CheckForm from "@/components/CheckForm";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16 relative">
-          {/* Decorative background elements */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-200/20 dark:bg-blue-800/20 rounded-full blur-3xl -z-10"></div>
-          <div className="absolute top-10 right-1/4 w-64 h-64 bg-indigo-200/20 dark:bg-indigo-800/20 rounded-full blur-3xl -z-10"></div>
-          
-          <div className="relative">
-            {/* Icon/Badge */}
-            <div className="flex justify-center mb-6">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl blur-xl opacity-50 animate-pulse"></div>
-                <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl transform hover:scale-110 transition-transform duration-300">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+    <>
+      {/* ============================== HERO ============================== */}
+      <section className="relative overflow-hidden">
+        {/* Aurora background layer */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10"
+        >
+          <div className="absolute inset-0 grid-bg opacity-60 dark:opacity-40" />
+          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[60rem] h-[40rem] rounded-full bg-primary/15 dark:bg-primary/20 blur-[120px] animate-aurora" />
+          <div className="absolute -top-20 right-1/3 w-[28rem] h-[28rem] rounded-full bg-accent/10 dark:bg-accent/15 blur-[100px] animate-aurora" />
+        </div>
+
+        <div className="container mx-auto pt-16 sm:pt-24 pb-12">
+          {/* Eyebrow */}
+          <div className="flex justify-center animate-fade-up" style={{ animationDelay: "0ms" }}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-surface/60 backdrop-blur-sm text-xs">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-success" />
+              </span>
+              <span className="text-muted-foreground">
+                Live · Federal Reserve directory
+              </span>
+              <span className="w-px h-3 bg-border" />
+              <span className="text-foreground font-medium">v1.0</span>
+            </div>
+          </div>
+
+          {/* Title */}
+          <h1
+            className="mt-8 text-center text-balance font-display font-semibold tracking-tightest text-foreground text-5xl sm:text-6xl lg:text-7xl leading-[1.05] animate-fade-up"
+            style={{ animationDelay: "60ms" }}
+          >
+            Verify any routing number
+            <br />
+            <span className="bg-gradient-to-br from-primary via-accent to-primary bg-clip-text text-transparent">
+              in under a second.
+            </span>
+          </h1>
+
+          {/* Subhead */}
+          <p
+            className="mx-auto mt-6 max-w-2xl text-center text-pretty text-base sm:text-lg leading-relaxed text-muted-foreground animate-fade-up"
+            style={{ animationDelay: "120ms" }}
+          >
+            Check4Real validates ABA routing numbers using the official{" "}
+            <span className="text-foreground font-medium">Mod-10 algorithm</span>{" "}
+            and cross-references the public Federal Reserve E-Payments directory.
+            No accounts, no logs, no tracking.
+          </p>
+
+          {/* Hero actions */}
+          <div
+            className="mt-10 flex flex-wrap items-center justify-center gap-3 animate-fade-up"
+            style={{ animationDelay: "180ms" }}
+          >
+            <a
+              href="#verify"
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity shadow-soft"
+            >
+              Start verifying
+              <svg
+                viewBox="0 0 24 24"
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </a>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-lg border border-border bg-surface/60 backdrop-blur-sm text-foreground text-sm font-medium hover:bg-surface-elevated transition-colors"
+            >
+              How it works
+            </a>
+          </div>
+
+          {/* Trust strip */}
+          <div
+            className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 animate-fade-up"
+            style={{ animationDelay: "240ms" }}
+          >
+            {[
+              { label: "ABA Standards" },
+              { label: "Mod-10 Verified" },
+              { label: "Federal Reserve Data" },
+              { label: "Zero Data Stored" },
+              { label: "TLS Encrypted" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 text-success"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12.5l4.5 4.5L19 7.5" />
+                </svg>
+                {item.label}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================ VERIFIER ============================ */}
+      <section id="verify" className="relative scroll-mt-24">
+        <div className="container mx-auto py-12 sm:py-16">
+          <div className="mx-auto max-w-3xl">
+            <div className="relative">
+              {/* Subtle ambient glow behind card */}
+              <div
+                aria-hidden="true"
+                className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 blur-xl opacity-60"
+              />
+              <div className="relative rounded-2xl border border-border bg-surface/80 backdrop-blur-xl shadow-panel overflow-hidden">
+                {/* Card header */}
+                <div className="flex items-center justify-between gap-4 px-6 sm:px-8 py-5 border-b border-border/70">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-danger/70" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-warning/70" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-success/70" />
+                    </div>
+                    <span className="font-mono text-xs text-muted-foreground tracking-tight">
+                      check4real.io / verify
+                    </span>
+                  </div>
+                  <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    Encrypted · No logs
+                  </span>
+                </div>
+
+                {/* Form area */}
+                <div className="px-6 sm:px-10 py-8 sm:py-10">
+                  <CheckForm />
                 </div>
               </div>
             </div>
-
-            {/* Title with gradient */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent leading-tight">
-              Check4Real
-            </h1>
-
-            {/* Subtitle */}
-            <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-full text-blue-700 dark:text-blue-300 font-semibold text-sm sm:text-base shadow-lg backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50">
-                Verify Your Checks
-              </span>
-            </div>
-
-            {/* Description */}
-            <div className="max-w-2xl mx-auto">
-              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                Verify check routing numbers using <strong className="font-semibold text-gray-900 dark:text-white">Federal Reserve database</strong> information.
-              </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-              Validates routing number structure, applies the check-digit algorithm, and cross-references official bank information.
-              </p>
-            </div>
-
-            {/* Feature highlights */}
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-sm">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Instant Verification</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-sm">
-                <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Secure & Private</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-sm">
-                <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                </svg>
-                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Real-time Database</span>
-              </div>
-            </div>
           </div>
         </div>
+      </section>
 
-        {/* Main Form */}
-        <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-2xl p-8 sm:p-10 border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-indigo-50/50 dark:from-blue-900/10 dark:to-indigo-900/10"></div>
-          <div className="relative">
-            <CheckForm />
-          </div>
-        </div>
-
-        {/* Info Section */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent dark:from-blue-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                <svg
-                  className="w-7 h-7 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">
-                No Stored Data
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Client-side processing, zero data collection, and follows best practices for privacy and security.
-              </p>
-            </div>
+      {/* =========================== HOW IT WORKS ========================== */}
+      <section id="how-it-works" className="relative scroll-mt-24">
+        <div className="container mx-auto py-20 sm:py-28">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">
+              How it works
+            </p>
+            <h2 className="font-display font-semibold tracking-tighter text-4xl sm:text-5xl text-foreground text-balance">
+              Three layers of verification, in real time.
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground text-pretty">
+              Each request runs through structural validation, the ABA check-digit
+              algorithm, and a directory lookup — entirely on the server, with
+              nothing stored on disk.
+            </p>
           </div>
 
-          <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent dark:from-indigo-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                <svg
-                  className="w-7 h-7 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">
-                Validation Algorithm
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Validates the routing number using the Mod 10 (Luhn) check digit algorithm.
-              </p>
-            </div>
-          </div>
-
-          <div className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:scale-105 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-transparent dark:from-purple-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                <svg
-                  className="w-7 h-7 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">
-                Federal Reserve Database
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Cross-references routing numbers against the official Federal Reserve routing number database.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="mt-12 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg
-                className="h-5 w-5 text-yellow-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              {
+                step: "01",
+                title: "Structural validation",
+                description:
+                  "Confirms a 9-digit numeric format and verifies the leading prefix matches a valid Federal Reserve district.",
+                icon: (
+                  <path d="M3 7h18M3 12h18M3 17h12" />
+                ),
+              },
+              {
+                step: "02",
+                title: "Mod-10 check digit",
+                description:
+                  "Applies the ABA's weighted Mod-10 algorithm: 3·(d1+d4+d7) + 7·(d2+d5+d8) + (d3+d6+d9) ≡ 0 (mod 10).",
+                icon: (
+                  <>
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 8v4l3 2" />
+                  </>
+                ),
+              },
+              {
+                step: "03",
+                title: "Directory lookup",
+                description:
+                  "Cross-references the official Federal Reserve E-Payments directory to surface bank name, location, and contact.",
+                icon: (
+                  <>
+                    <path d="M3 21h18" />
+                    <path d="M5 21V8l7-4 7 4v13" />
+                    <path d="M9 21v-6h6v6" />
+                  </>
+                ),
+              },
+            ].map((item, idx) => (
+              <div
+                key={item.step}
+                className="group relative rounded-2xl border border-border bg-surface p-6 hover:border-border-strong hover:bg-surface-elevated transition-all duration-300"
+                style={{ animationDelay: `${idx * 80}ms` }}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                  clipRule="evenodd"
+                <div className="flex items-start justify-between mb-6">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-foreground/[0.04] border border-border group-hover:bg-primary/10 group-hover:border-primary/40 transition-colors">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5 text-foreground/70 group-hover:text-primary transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.8}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      {item.icon}
+                    </svg>
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground tracking-tight">
+                    {item.step}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-foreground tracking-tight mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================ TRUST / STATS ========================== */}
+      <section id="trust" className="relative scroll-mt-24">
+        <div className="container mx-auto pb-20 sm:pb-28">
+          <div className="rounded-3xl border border-border bg-surface/60 backdrop-blur-xl overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-10 sm:p-14 border-b md:border-b-0 md:border-r border-border">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">
+                  Built on the right primitives
+                </p>
+                <h2 className="font-display font-semibold tracking-tighter text-3xl sm:text-4xl text-foreground text-balance">
+                  Bank-grade methodology, without the friction.
+                </h2>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  We don't guess. Verification is grounded in published ABA
+                  standards and the Federal Reserve's public directory — the same
+                  primitives banks themselves use.
+                </p>
+
+                <ul className="mt-8 space-y-4">
+                  {[
+                    {
+                      title: "Privacy by default",
+                      body: "Routing numbers are processed in-memory and discarded. No logs, no analytics, no cookies.",
+                    },
+                    {
+                      title: "Rate-limited fairly",
+                      body: "10 verifications per minute per IP keeps the service free and abuse-resistant.",
+                    },
+                    {
+                      title: "Open, inspectable logic",
+                      body: "Mod-10 is deterministic — re-derive the same result yourself anytime.",
+                    },
+                  ].map((f) => (
+                    <li key={f.title} className="flex gap-3">
+                      <div className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-success/15 flex items-center justify-center">
+                        <svg
+                          viewBox="0 0 24 24"
+                          className="w-3 h-3 text-success"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12.5l4.5 4.5L19 7.5" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-foreground">
+                          {f.title}
+                        </p>
+                        <p className="text-sm text-muted-foreground mt-0.5">
+                          {f.body}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="relative p-10 sm:p-14 bg-gradient-to-br from-surface-elevated to-surface">
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 dot-bg opacity-50"
                 />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm text-yellow-700 dark:text-yellow-300">
-                <strong>Disclaimer:</strong> This service provides routing number verification
-                for informational purposes only. Verification does not guarantee check authenticity
-                or that funds are available. Always verify with your bank before accepting or depositing checks.
-              </p>
-              <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">
-                <a href="/privacy" className="underline hover:text-yellow-800 dark:hover:text-yellow-200 font-medium">
-                  View our Privacy Policy
-                </a>
-                {' • '}
-                We do not store any routing numbers or user data.
-              </p>
+                <div className="relative grid grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+                  {[
+                    { value: "29,000+", label: "U.S. financial institutions" },
+                    { value: "<200ms", label: "Average response time" },
+                    { value: "0", label: "Records stored on our servers" },
+                    { value: "100%", label: "Free, no account needed" },
+                  ].map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="bg-surface p-6 sm:p-8"
+                    >
+                      <p className="font-display text-3xl sm:text-4xl font-semibold tracking-tighter text-foreground">
+                        {stat.value}
+                      </p>
+                      <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="relative mt-8 p-5 rounded-xl border border-border bg-surface">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="16 18 22 12 16 6" />
+                      <polyline points="8 6 2 12 8 18" />
+                    </svg>
+                    <span className="font-mono">verify.ts</span>
+                  </div>
+                  <pre className="text-xs leading-relaxed font-mono text-muted-foreground overflow-x-auto">
+                    <code>
+                      <span className="text-primary">const</span> sum ={" "}
+                      <span className="text-accent">3</span>*(d[0]+d[3]+d[6])
+                      <br />
+                      {"        "}+{" "}
+                      <span className="text-accent">7</span>*(d[1]+d[4]+d[7])
+                      <br />
+                      {"        "}+{"   "}
+                      <span className="text-accent"> </span>(d[2]+d[5]+d[8]);
+                      <br />
+                      <span className="text-primary">return</span> sum %{" "}
+                      <span className="text-accent">10</span> ==={" "}
+                      <span className="text-accent">0</span>;
+                    </code>
+                  </pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      {/* ============================== FAQ =============================== */}
+      <section id="faq" className="relative scroll-mt-24">
+        <div className="container mx-auto pb-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">
+                FAQ
+              </p>
+              <h2 className="font-display font-semibold tracking-tighter text-3xl sm:text-4xl text-foreground text-balance">
+                Common questions.
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Don't see yours? Read the{" "}
+                <Link
+                  href="/privacy"
+                  className="text-foreground underline underline-offset-4 decoration-border hover:decoration-primary transition-colors"
+                >
+                  privacy policy
+                </Link>{" "}
+                for the technical details.
+              </p>
+            </div>
+
+            <div className="md:col-span-2">
+              <dl className="divide-y divide-border border-y border-border">
+                {[
+                  {
+                    q: "Does Check4Real guarantee a check is real?",
+                    a: "No tool can. Verifying a routing number proves the bank exists and the number is well-formed — not that the issuer has funds or that the check itself is authentic. Always confirm with your bank before depositing.",
+                  },
+                  {
+                    q: "Where does the bank data come from?",
+                    a: "We use the public Federal Reserve E-Payments directory (FedACH/Fedwire) as the authoritative source, supplemented by the BankRouting.io API for enriched lookups.",
+                  },
+                  {
+                    q: "Do you store any data I enter?",
+                    a: "No. Routing numbers are processed in-memory and discarded immediately after the response is returned. We don't use cookies, analytics, or any tracking.",
+                  },
+                  {
+                    q: "Is there a rate limit?",
+                    a: "Yes — 10 requests per minute per IP. This keeps the service free and abuse-resistant. If you need higher throughput, contact us.",
+                  },
+                  {
+                    q: "Can I use this commercially?",
+                    a: "Check4Real is provided as an informational utility. For production payment systems, you should use a licensed provider with SLAs and a contractual data source.",
+                  },
+                ].map((item) => (
+                  <details
+                    key={item.q}
+                    className="group py-6 [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary className="flex cursor-pointer items-start justify-between gap-6 list-none">
+                      <span className="font-medium text-foreground text-base sm:text-lg pr-4">
+                        {item.q}
+                      </span>
+                      <span className="flex-shrink-0 mt-1 w-7 h-7 rounded-full border border-border flex items-center justify-center text-muted-foreground group-open:bg-foreground group-open:text-background group-open:border-foreground transition-colors">
+                        <svg
+                          viewBox="0 0 24 24"
+                          className="w-3.5 h-3.5 group-open:rotate-45 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 5v14M5 12h14" />
+                        </svg>
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-muted-foreground leading-relaxed pr-12">
+                      {item.a}
+                    </p>
+                  </details>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================= FINAL CTA / DISCLAIMER ====================== */}
+      <section className="relative">
+        <div className="container mx-auto pb-24">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-surface to-surface-elevated p-8 sm:p-12">
+            <div
+              aria-hidden="true"
+              className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl"
+            />
+            <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-warning/15 border border-warning/30 flex items-center justify-center">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-5 h-5 text-warning"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Informational use only
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground max-w-2xl leading-relaxed">
+                    Verification confirms a routing number's structure and the
+                    issuing bank — it does not guarantee check authenticity or
+                    available funds. Always verify with your bank before
+                    accepting or depositing a check.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/privacy"
+                className="inline-flex items-center gap-2 h-10 px-4 rounded-lg border border-border bg-surface hover:bg-surface-elevated text-sm font-medium text-foreground transition-colors whitespace-nowrap"
+              >
+                Read Privacy Policy
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
-
