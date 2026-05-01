@@ -1,31 +1,42 @@
 interface LogoProps {
   className?: string;
-  showWordmark?: boolean;
+  variant?: "wordmark" | "mark";
+  size?: "sm" | "md" | "lg";
 }
 
-export default function Logo({ className = "", showWordmark = true }: LogoProps) {
+const sizes = {
+  sm: "text-[14px]",
+  md: "text-[15px]",
+  lg: "text-base",
+};
+
+export default function Logo({
+  className = "",
+  variant = "wordmark",
+  size = "md",
+}: LogoProps) {
+  if (variant === "mark") {
+    return (
+      <span
+        aria-label="Check4Real"
+        className={`inline-flex items-baseline font-mono font-bold leading-none ${className}`}
+      >
+        <span className="text-foreground">/</span>
+        <span className="text-primary">4</span>
+      </span>
+    );
+  }
+
   return (
-    <div className={`flex items-center gap-2.5 ${className}`}>
-      <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent shadow-soft">
-        <svg
-          viewBox="0 0 24 24"
-          className="w-4 h-4 text-primary-foreground"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M5 12.5l4.5 4.5L19 7.5" />
-        </svg>
-        <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-white/20" aria-hidden="true" />
-      </div>
-      {showWordmark && (
-        <span className="font-semibold tracking-tight text-foreground text-[15px]">
-          Check<span className="text-primary">4</span>Real
-        </span>
-      )}
+    <div
+      aria-label="Check4Real"
+      className={`inline-flex items-baseline font-semibold tracking-tightest text-foreground select-none ${sizes[size]} ${className}`}
+    >
+      <span>Check</span>
+      <span className="font-mono font-bold text-primary tracking-normal mx-[2px] text-[1.08em] leading-none translate-y-[0.5px]">
+        4
+      </span>
+      <span>Real</span>
     </div>
   );
 }
