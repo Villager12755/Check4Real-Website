@@ -67,43 +67,10 @@ export default function CheckForm() {
   const digits = routingNumber.padEnd(9, "•").split("");
   const formatted = `${routingNumber.slice(0, 3)}${routingNumber.length > 3 ? " " : ""}${routingNumber.slice(3, 6)}${routingNumber.length > 6 ? " " : ""}${routingNumber.slice(6, 9)}`;
 
-  const showHint = routingNumber.length === 0 && !isLoading && !result;
-
   return (
     <div className="w-full">
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="relative">
-          {/* Hand-drawn "enter here" annotation — shown when input is empty */}
-          {showHint && (
-            <div
-              aria-hidden="true"
-              className="absolute z-10 pointer-events-none animate-fade-in hidden sm:flex top-8 right-32 lg:right-36 items-start gap-0.5 select-none"
-            >
-              <span
-                className="font-mono italic text-sm text-primary whitespace-nowrap mt-2"
-                style={{
-                  transform: "rotate(-5deg)",
-                  animation: "floatSlow 2.8s ease-in-out infinite",
-                }}
-              >
-                enter here
-              </span>
-              <svg
-                viewBox="0 0 36 70"
-                className="w-8 h-[68px] text-primary"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.6}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ animation: "floatSlow 2.8s ease-in-out infinite" }}
-              >
-                <path d="M5 4 C 28 10, 34 30, 22 50 C 18 56, 13 60, 7 62" />
-                <path d="M3 56 L 7 62 L 13 58" />
-              </svg>
-            </div>
-          )}
-
+        <div>
           <label
             htmlFor="routingNumber"
             className="flex items-center justify-between mb-3"
@@ -161,7 +128,7 @@ export default function CheckForm() {
                   setRoutingNumber(cleaned);
                   if (result) setResult(null);
                 }}
-                placeholder="000 000 000"
+                placeholder="Enter here:"
                 className="w-full h-14 px-4 sm:px-5 rounded-xl border border-border bg-background hover:border-border-strong focus:border-primary focus:ring-4 focus:ring-primary/15 focus:outline-none text-foreground placeholder:text-muted-foreground/40 text-xl font-mono tracking-wider transition-all duration-200 disabled:opacity-50"
                 required
                 disabled={isLoading}
