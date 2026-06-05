@@ -43,9 +43,12 @@ export default function PrivacyPolicy() {
     { id: "third-party", label: "Third-party services" },
     { id: "cookies", label: "Cookies & tracking" },
     { id: "children", label: "Children's privacy" },
+    { id: "disclaimer", label: "Disclaimer & liability" },
     { id: "changes", label: "Changes to this policy" },
     { id: "contact", label: "Contact" },
   ];
+
+  const contactEmail = "dvishnut1@gmail.com";
 
   return (
     <div className="relative">
@@ -289,7 +292,114 @@ export default function PrivacyPolicy() {
                 Our service is not directed to individuals under the age of 13.
                 We do not knowingly collect information from children under 13.
                 If you believe we have collected information from a child under
-                13, please contact us.
+                13, please contact us at{" "}
+                <a
+                  href={`mailto:${contactEmail}`}
+                  className="text-primary hover:underline underline-offset-4 decoration-primary/40 font-medium"
+                >
+                  {contactEmail}
+                </a>
+                .
+              </p>
+            </Section>
+
+            <Section id="disclaimer" title="Disclaimer & limitation of liability">
+              <p>
+                Check4Real is provided for{" "}
+                <strong className="text-foreground">informational purposes only</strong>.
+                It is not financial, legal, banking, or fraud-prevention advice,
+                and it is not a substitute for verification with your bank or
+                other qualified professionals.
+              </p>
+
+              <h3 className="text-lg font-semibold text-foreground">
+                No warranties
+              </h3>
+              <p>
+                The service and all results are provided on an{" "}
+                <strong className="text-foreground">"as is"</strong> and{" "}
+                <strong className="text-foreground">"as available"</strong> basis,
+                without warranties of any kind, whether express or implied,
+                including but not limited to implied warranties of
+                merchantability, fitness for a particular purpose, accuracy,
+                completeness, reliability, or non-infringement. We do not
+                warrant that the service will be uninterrupted, error-free, or
+                free of harmful components, or that verification results will be
+                accurate, current, or suitable for any particular decision.
+              </p>
+
+              <h3 className="text-lg font-semibold text-foreground">
+                No guarantee of check authenticity
+              </h3>
+              <p>
+                Routing-number verification confirms structure and, when
+                available, directory information about an institution. It does{" "}
+                <strong className="text-foreground">not</strong> guarantee that
+                a check is genuine, that funds are available, that an account
+                exists, or that a transaction will succeed. You are solely
+                responsible for any decision to accept, deposit, transfer funds
+                based on, or otherwise rely on information from this service.
+              </p>
+
+              <h3 className="text-lg font-semibold text-foreground">
+                Limitation of liability
+              </h3>
+              <p>
+                To the fullest extent permitted by applicable law, the creators,
+                operators, contributors, and affiliates of Check4Real (collectively,
+                the "Service Providers") shall not be liable for any direct,
+                indirect, incidental, special, consequential, exemplary, or punitive
+                damages, or any loss of profits, revenue, data, goodwill, or
+                business opportunity, arising out of or related to your use of
+                (or inability to use) the service, any verification result, any
+                reliance on such result, any third-party data source (including
+                BankRouting.io or public routing directories), service
+                interruptions, or unauthorized access — whether based on
+                contract, tort (including negligence), strict liability, or any
+                other theory, even if we have been advised of the possibility of
+                such damages.
+              </p>
+              <p>
+                Where liability cannot be fully excluded, the total aggregate
+                liability of the Service Providers for any claim arising out of
+                or relating to the service shall not exceed{" "}
+                <strong className="text-foreground">zero U.S. dollars ($0)</strong>
+                , or the minimum amount permitted by law, whichever is greater.
+              </p>
+
+              <h3 className="text-lg font-semibold text-foreground">
+                Release and assumption of risk
+              </h3>
+              <p>
+                By using Check4Real, you acknowledge that you use the service at
+                your own risk and voluntarily release, discharge, and hold
+                harmless the Service Providers from any and all claims, demands,
+                causes of action, losses, liabilities, damages, costs, and
+                expenses (including reasonable attorneys&apos; fees) arising from
+                your use of the service or reliance on any information it
+                provides, including claims alleging negligence, omission, or
+                misrepresentation, to the maximum extent permitted by law.
+              </p>
+
+              <h3 className="text-lg font-semibold text-foreground">
+                Third-party data
+              </h3>
+              <p>
+                We do not control and are not responsible for the accuracy,
+                availability, or policies of third-party services or data sources
+                used to provide lookups. Any issues with third-party data are
+                subject to those providers&apos; terms and policies.
+              </p>
+
+              <h3 className="text-lg font-semibold text-foreground">
+                Jurisdiction
+              </h3>
+              <p>
+                Some jurisdictions do not allow certain limitations of liability
+                or disclaimers of implied warranties. In those jurisdictions,
+                the above limitations apply only to the extent permitted by
+                applicable law. Nothing in this section is intended to exclude
+                liability that cannot be excluded under law.
               </p>
             </Section>
 
@@ -303,15 +413,16 @@ export default function PrivacyPolicy() {
 
             <Section id="contact" title="Contact">
               <p>
-                If you have any questions about this Privacy Policy, please
-                reach out via the{" "}
-                <Link
-                  href="/"
+                If you have any questions about this Privacy Policy, the
+                disclaimer above, or Check4Real in general, contact us at:
+              </p>
+              <p>
+                <a
+                  href={`mailto:${contactEmail}`}
                   className="text-primary hover:underline underline-offset-4 decoration-primary/40 font-medium"
                 >
-                  Check4Real homepage
-                </Link>
-                .
+                  {contactEmail}
+                </a>
               </p>
             </Section>
 
