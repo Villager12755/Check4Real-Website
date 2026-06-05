@@ -159,6 +159,12 @@ export default function PrivacyPolicy() {
               <ul className="list-disc list-outside pl-5 space-y-2">
                 <li>Validated for format and check-digit algorithm</li>
                 <li>
+                  Sent to our server via{" "}
+                  <strong className="text-foreground">HTTPS POST</strong> in a
+                  JSON request body — not in the URL — so routing numbers do
+                  not appear in standard server access-log paths
+                </li>
+                <li>
                   Used to query external routing-number directories for bank
                   information
                 </li>
@@ -222,10 +228,21 @@ export default function PrivacyPolicy() {
               </h3>
               <p>
                 Our hosting provider (Vercel) may log standard server
-                information such as IP addresses, request timestamps, and error
-                messages for operational purposes. These logs are retained per
-                Vercel's data-retention policies and do not include routing
-                numbers in error logs.
+                information such as IP addresses, request timestamps, HTTP
+                method, and request path (for example,{" "}
+                <code className="text-sm font-mono text-foreground/80">
+                  POST /api/verify
+                </code>
+                ) for operational purposes. Because verification uses POST
+                with a JSON body, routing numbers are{" "}
+                <strong className="text-foreground">
+                  not recorded in URL-based access logs
+                </strong>
+                . We do not log request bodies in our application code.
+              </p>
+              <p>
+                Error logs from our API routes contain only generic error
+                messages, not routing numbers you submit.
               </p>
             </Section>
 

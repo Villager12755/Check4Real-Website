@@ -36,7 +36,7 @@ GET https://bankrouting.io/api/v1/aba/021000021
 
 The API is integrated through a Next.js API route (`/api/verify`) which:
 
-1. Receives the routing number from the client
+1. Receives the routing number from the client via **POST** with a JSON body (`{ "routingNumber": "..." }`) so the number does not appear in URL access logs
 2. Validates the format server-side
 3. Makes the request to BankRouting.io
 4. Formats the response to match our application's data structure

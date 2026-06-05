@@ -29,14 +29,13 @@
 - The external API has rate limiting (100 requests/hour/IP)
 
 #### 2. **Server Logs**
-- Vercel may log API route requests in server logs
-- These logs may contain routing numbers in URL query strings
-- Consider if this meets your privacy requirements
+- Vercel may log API route requests in server logs (method, path, IP, timestamps)
+- Verification uses **POST** `/api/verify` with a JSON body — routing numbers are **not** placed in URL query strings
+- Application code does not log request bodies; error logs contain generic messages only
 
 #### 3. **Rate Limiting**
-- No rate limiting implemented on the Next.js API route itself
-- Currently relies on external API's rate limiting
-- Consider adding rate limiting for production
+- ✅ Rate limiting implemented on `/api/verify` (10 requests per minute per IP)
+- External BankRouting.io API also has its own rate limiting (100 requests/hour/IP)
 
 #### 4. **Error Logging**
 ```typescript
@@ -47,22 +46,12 @@ console.error('Error fetching routing number:', error);
 
 ## Recommendations for Enhanced Security
 
-### 1. **Add Rate Limiting** (Optional)
-Consider implementing rate limiting on your API route to prevent abuse:
-```typescript
-// Example: Limit to 10 requests per minute per IP
-import { rateLimit } from '@/lib/rateLimit';
-```
+### 1. **Rate Limiting** (Implemented ✅)
+- `/api/verify` limits to 10 requests per minute per IP via `@/lib/rateLimit`
 
-### 2. **Remove Routing Number from Error Responses** (Optional)
-Currently error responses include the routing number. Consider removing it:
-```typescript
-// Instead of:
-error: 'Routing number not found in database'
-
-// Could be:
-error: 'Routing number not found'
-```
+### 2. **POST-Only Verification** (Implemented ✅)
+- Routing numbers are sent in the request body, not URL query strings
+- `GET /api/verify` returns 405 Method Not Allowed
 
 ### 3. **Add Request Validation** (Already Implemented ✅)
 - ✅ Format validation
@@ -101,7 +90,7 @@ The only external dependency is the BankRouting.io API, which is necessary for t
 
 **For production deployment:**
 1. ✅ Deploy with HTTPS (automatic on Vercel)
-2. ⚠️ Consider adding rate limiting
-3. ⚠️ Add privacy policy
+2. ✅ Rate limiting on `/api/verify`
+3. ✅ Privacy policy (POST transmission documented)
 4. ⚠️ Monitor usage patterns
 

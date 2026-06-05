@@ -33,7 +33,11 @@ export function validateCheckDigit(routingNumber: string): boolean {
  */
 export async function fetchBankInfoFromAPI(routingNumber: string): Promise<BankInfo | null> {
   try {
-    const response = await fetch(`/api/verify?routingNumber=${routingNumber}`);
+    const response = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ routingNumber }),
+    });
     const data = await response.json();
 
     // Handle rate limiting
