@@ -22,8 +22,8 @@ export default function LiveBackground() {
       {/* Fine grid that drifts slowly */}
       <div className="live-grid" />
 
-      {/* Top vignette so header text stays readable */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/80" />
+      {/* Vignette — light enough that the live effect stays visible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/55" />
     </div>
   );
 }
