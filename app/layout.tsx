@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ThemeScript from "@/components/ThemeScript";
+import LiveBackground from "@/components/LiveBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -69,8 +70,9 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body className="font-sans antialiased bg-background text-foreground min-h-screen flex flex-col">
+        <LiveBackground />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative">{children}</main>
         <Footer />
       </body>
     </html>

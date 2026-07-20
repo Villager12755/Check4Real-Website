@@ -6,16 +6,6 @@ export default function Home() {
     <>
       {/* ============================== HERO ============================== */}
       <section className="relative overflow-hidden">
-        {/* Aurora background layer */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
-          <div className="absolute inset-0 grid-bg opacity-60 dark:opacity-40" />
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[60rem] h-[40rem] rounded-full bg-primary/15 dark:bg-primary/20 blur-[120px] animate-aurora" />
-          <div className="absolute -top-20 right-1/3 w-[28rem] h-[28rem] rounded-full bg-accent/10 dark:bg-accent/15 blur-[100px] animate-aurora" />
-        </div>
-
         <div className="container mx-auto pt-16 sm:pt-24 pb-12">
           {/* Eyebrow */}
           <div className="flex justify-center animate-fade-up" style={{ animationDelay: "0ms" }}>
